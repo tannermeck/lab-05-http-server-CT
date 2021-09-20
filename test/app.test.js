@@ -32,4 +32,9 @@ describe('test GET / route', () => {
 
     expect(res.status).toEqual(404);
   });
+  it('returns 404 from GET /styles', async () => {
+    const res = await request(app).get('/bad-file');
+
+    expect(res.status).toEqual(404);
+  });
 });
