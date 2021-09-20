@@ -18,4 +18,18 @@ describe('test GET / route', () => {
 </body>
 </html>`);
   });
+
+  it('returns main.css file contents on GET /styles/main.css', async () => {
+    const res = await request(app).get('/styles/main.css');
+
+    expect(res.text).toEqual(`h1 {
+    font-weight: bolder;
+}`);
+  });
+
+  it('returns 404 from GET /bad-file', async () => {
+    const res = await request(app).get('/bad-file');
+
+    expect(res.status).toEqual(404);
+  });
 });
